@@ -9,7 +9,7 @@
     "lint": "prettier --write \"./**/*.{js,json}\" && eslint --fix --ignore-path .gitignore ."
   },
   "author": "",
-  "license": "Unlicense",
+  "license": "The Unlicense",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.1.0",
