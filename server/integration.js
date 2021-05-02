@@ -1,41 +1,26 @@
 const axios = require('axios');
 
 async function getMessages(socket) {
-  let res;
-
-  try {
-    res = await axios.default.get(
-      `${process.env.DISCORD_BASE_URL}/channels/${process.env.DISCORD_CHANNEL_ID}/messages`,
-      {
-        headers: {
-          Authorization: `Bot ${process.env.DISCORD_API_KEY}`
-        }
+  const res = await axios.default.get(
+    `${process.env.DISCORD_BASE_URL}/channels/${process.env.DISCORD_CHANNEL_ID}/messages`,
+    {
+      headers: {
+        Authorization: `Bot ${process.env.DISCORD_API_KEY}`
       }
-    );
-  } catch (err) {
-    console.error('oh fuck ', err);
-  }
-
-  let list = Array.from(res.data);
-
-  list = list.map(el => {
-    let votes = 0;
-
-    if (el.reactions && el.reactions.some(item => item.emoji.name === '✅')) {
-      votes = el.reactions.filter(item => item.emoji.name === '✅')[0].count;
     }
+  );
 
-    return {
+  const out = Array.from(res.data)
+    .filter(el => el.content.trim().length > 0)
+    .map(el => ({
       id: el.id,
       username: el.author.username,
-      content: el.content,
-      votes
-    };
-  });
+      content: el.content.trim(),
+      votes: el.reactions?.find(item => item.emoji.name === '👍')?.count
+    }))
+    .sort((a, b) => b.votes - a.votes || -1);
 
-  list = list.filter(el => el.content.trim().length > 0).sort((a, b) => b.votes - a.votes);
-
-  socket.send(JSON.stringify(list));
+  socket.send(JSON.stringify(out));
 }
 
 module.exports = { getMessages };
