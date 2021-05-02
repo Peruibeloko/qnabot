@@ -24,4 +24,4 @@ A ideia principal é que após uma conexão WS estabelecida, o Node escuta event
 
 # Contribuição
 
-Não é meu principal enfoque aceitar PRs no momento, e como isso é um projeto bem pequeno, aa Unlicense me serve bem. Então sinta-se a vontade para fazer um fork do projeto e modificar de acordo com a sua necessidade :D
+Não é meu principal enfoque aceitar PRs no momento, e como isso é um projeto bem pequeno, a Unlicense me serve bem. Então sinta-se a vontade para fazer um fork do projeto e modificar de acordo com a sua necessidade :D
