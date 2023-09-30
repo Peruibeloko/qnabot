@@ -1,6 +1,6 @@
 {
-  "name": "wobblemakers-voxpopuli",
-  "version": "0.1.0",
+  "name": "qnabot-client",
+  "version": "1.0.0",
   "private": true,
   "license": "The Unlicense",
   "scripts": {
