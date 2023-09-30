@@ -1,14 +1,13 @@
 {
-  "name": "voxpopuli-server",
+  "name": "qnabot-server",
   "version": "1.0.0",
-  "description": "Server side do Vox Populi",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js --exec babel-node --presets env",
     "build": "del dist && mkdir dist && babel . -s -D -d dist --presets env --ignore node_modules",
     "lint": "prettier --write \"./**/*.{js,json}\" && eslint --fix --ignore-path .gitignore ."
   },
-  "author": "",
+  "author": "peruibeloko",
   "license": "The Unlicense",
   "devDependencies": {
     "babel-cli": "^6.26.0",
