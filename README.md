@@ -1,3 +1,41 @@
+# QnABot
+
+## Usage
+
+Seems like a lot of stuff, but it really isn't.
+
+### Pre-requisites
+
+Before running anything, ensure you have:
+
+- A working Node installation
+- A Discord API key
+
+This project was built using **pnpm**, but npm works just as well.
+
+### Configuration
+
+Your `/server/.env` file must have these properties in order to work
+
+```yaml
+DISCORD_API_KEY = # Your API key
+DISCORD_BASE_URL = https://discord.com/api
+DISCORD_CHANNEL_ID = # The Channel ID for your QnA discord channel
+PORT = # Optional, defaults to 8585
+```
+
+In order to obtain the Channel ID, you'll need to first activate Developer Mode in Discord (`Settings -> Advanced -> Enable "Developer Mode"`), then right-click on the desired channel and "Copy Channel ID"
+
+### Running the application
+
+1. Clone the repo on your machine
+2. Run `npm install` on both client and server folders
+3. Run `npm start` on both server and client folders
+4. Wait for the server instance to start up
+5. Open your local frontend instance
+
+And that should be it! It wasn't so bad, was it?
+
 # Backend - [node.js](https://nodejs.org/)
 
 Backend is a mix of direct calls to Discord's API (for querying the complete list of messages from a channel) and the [discord.js](https://discord.js.org/#/) library (for real-time sync)
