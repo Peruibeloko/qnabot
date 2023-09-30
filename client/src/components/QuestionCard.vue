@@ -1,41 +1,60 @@
+<script setup lang="ts">
+interface QuestionContent {
+  id: string;
+  votes: number;
+  username: string;
+  content: string;
+}
+
+type Question = QuestionContent & { answered: boolean };
+
+interface Props {
+  question: QuestionContent;
+  answered: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  answered: false,
+});
+
+interface Events {
+  (e: "done", id: string, isAnswered: boolean): void;
+}
+
+defineEmits<Events>();
+
+export type { QuestionContent, Question };
+</script>
+
 <template>
   <article class="wrapper">
     <header>
       <div class="check-container">
-        <label :for="`toggle-${question.id}`">{{ answeredProp ? '✔' : '' }}</label>
+        <label :for="`toggle-${props.question.id}`">{{
+          props.answered ? "✔" : ""
+        }}</label>
         <input
           type="checkbox"
-          :id="`toggle-${question.id}`"
+          :id="`toggle-${props.question.id}`"
           class="toggle"
-          @click="toggleAnswered"
+          @click="$emit('done', props.question.id, props.answered)"
         />
       </div>
       <div class="username">
-        {{ question.username }}
+        {{ props.question.username }}
       </div>
       <div class="spacer"></div>
-      <span class="votes">{{ question.votes || 0 }} voto{{ question.votes === 1 ? '' : 's' }}</span>
+      <span class="votes"
+        >{{ props.question.votes || 0 }} voto{{
+          props.question.votes === 1 ? "" : "s"
+        }}</span
+      >
     </header>
     <div class="pergunta">
-      {{ question.content }}
+      {{ props.question.content }}
     </div>
   </article>
 </template>
-
-<script>
-export default {
-  name: 'Pergunta',
-  props: {
-    question: Object,
-    answeredProp: Boolean
-  },
-  methods: {
-    toggleAnswered() {
-      this.$emit('toggleAnswer', this.question.id, this.answeredProp);
-    }
-  }
-};
-</script>
 
 <style scoped>
 .wrapper {
@@ -82,7 +101,7 @@ label {
 
 .username {
   font-size: 3rem;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   border-left: 0.5rem solid rgb(192, 32, 32);
   padding-left: 1rem;
   margin-left: 1rem;
@@ -96,7 +115,7 @@ label {
 .votes {
   color: white;
   font-size: 2rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .pergunta {
@@ -104,6 +123,6 @@ label {
   white-space: pre-line;
   padding: 1rem;
   font-size: 1.5rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 </style>
