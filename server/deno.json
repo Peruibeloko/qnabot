@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --watch=./src ./src/app.ts"
+  },
+  "imports": {
+    "deps": "./src/deps.ts",
+    "handlers": "./src/handlers/index.ts",
+    "clients": "./src/clients/index.ts",
+    "middlewares": "./src/middlewares/index.ts"
+  },
+  "fmt": {
+    "options": {
+      "singleQuote": true,
+      "lineWidth": 100
+    }
+  }
+}

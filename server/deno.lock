@@ -1,0 +1,24 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:discord-interactions": "npm:discord-interactions@3.4.0"
+    },
+    "npm": {
+      "discord-interactions@3.4.0": {
+        "integrity": "sha512-DG0Jxdd/FcK8liAPhIP4u5YHpnz50JWn9DK4OavxsLD49/WGimXtP3EdOY439MaWyCgQfsfFkA1GsTEyu63RzA==",
+        "dependencies": {
+          "tweetnacl": "tweetnacl@1.0.3"
+        }
+      },
+      "tweetnacl@1.0.3": {
+        "integrity": "sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==",
+        "dependencies": {}
+      }
+    }
+  },
+  "redirects": {
+    "https://deno.land/x/harmony/mod.ts": "https://deno.land/x/harmony@v2.9.0/mod.ts"
+  },
+  "remote": {}
+}
